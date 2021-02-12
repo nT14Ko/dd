@@ -100,9 +100,7 @@ public class GameStats extends Activity implements AsyncStatsResponse {
         yearAsync.execute(chartParams);
 
         AdView mAdView;
-        mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
     }
 
     public void back(View view){

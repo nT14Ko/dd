@@ -1,8 +1,10 @@
 package com.shageev.pavel.matchballs;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -23,6 +25,7 @@ enum GameMode{Selection, Swap, SwapBack, Explode, FallDown, OnHold}
 
 
 public class GameView extends SurfaceView {
+    boolean firstBack = true;
     GameLoop gameLoop;
     int sw, sh, screenDw, screenDh;
     int tileWidth;
@@ -292,7 +295,11 @@ public class GameView extends SurfaceView {
     protected void onDraw(Canvas canvas) {
         if (canvas != null && ResourceManager.getInstance().scaledImagesLoaded) {
             canvas.drawColor(Color.BLACK);
+            if(firstBack){
 
+                firstBack = false;
+            }
+            drawBack(canvas);
             drawResources(canvas);
             drawScore(canvas);
             drawFieldSquares(canvas);
@@ -304,6 +311,15 @@ public class GameView extends SurfaceView {
 
             //drawDebugArrays(canvas);
         }
+    }
+
+    private void drawBack(Canvas canvas){
+        Rect back = new Rect();
+        back.set(0,0,sw,sh);
+        Bitmap back1;
+//        back1 = ResourceManager.getInstance().
+//        back1 = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(Resources.getSystem(), R.drawable.rectangle71),100,100, true);
+        canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.back3),null, back,null);
     }
 
     private void drawFieldSquares(Canvas canvas){
