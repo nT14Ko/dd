@@ -13,8 +13,6 @@ public class ClassicGame extends Activity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         gType = (GameType)intent.getSerializableExtra("GameType");
-        //gv = new GameView(this);
-        //setContentView(gv);
         ResourceManager.getInstance().initPrefs(this);
         ResourceManager.getInstance().init(this);
     }

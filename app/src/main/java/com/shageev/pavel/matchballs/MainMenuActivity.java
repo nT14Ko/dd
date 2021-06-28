@@ -92,9 +92,6 @@ public class MainMenuActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-//        scoreEasy.setText(df.format(prefs.getLong("scoreEasy", 0)));
-//        scoreMedium.setText(df.format(prefs.getLong("scoreMedium", 0)));
-//        scoreHard.setText(df.format(prefs.getLong("scoreHard", 0)));
 
         scoreEasy.setText(df.format(ResourceManager.getInstance().hsRepo.getScoreDay(GameType.Easy, System.currentTimeMillis())));
         scoreMedium.setText(df.format(ResourceManager.getInstance().hsRepo.getScoreDay(GameType.Medium, System.currentTimeMillis())));
